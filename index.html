@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Elite Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #1A1A1A;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .sidebar-transition {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes tooltip-in {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-tooltip {
+            animation: tooltip-in 0.15s ease-out forwards;
+        }
+        .user-row-highlight {
+            background-color: #fff1f2 !important;
+            border-left: 4px solid #E11D48 !important;
+            box-shadow: inset 4px 0 10px rgba(225, 29, 72, 0.05);
+        }
+        .podium-orb-pulse {
+            animation: orb-pulse 2s infinite ease-in-out;
+        }
+        @keyframes orb-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(225, 29, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 12s linear infinite;
+        }
+
+        /* Water Flow Animation for Podium Numbers */
+        @keyframes water-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .rank-number-bg {
+            position: absolute;
+            font-size: 20rem; /* Reduced to fit within section height (340px = ~21rem) */
+            font-weight: 900;
+            line-height: 1;
+            z-index: 0;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: water-flow 8s ease infinite;
+            filter: blur(8px);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.85);
+            white-space: nowrap;
+        }
+
+        /* Visibility for Number One backdrop */
+        .rank-gold.rank-number-bg {
+            opacity: 0.08;
+            filter: blur(4px);
+        }
+
+        .podium-orb:hover .rank-number-bg {
+            opacity: 0.35; 
+            transform: translate(-50%, -55%) scale(1.1); 
+            filter: blur(0px);
+        }
+
+        .rank-gold {
+            background-image: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF8C00 50%, #B8860B 75%, #FFD700 100%);
+            text-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+        }
+        .rank-silver {
+            background-image: linear-gradient(135deg, #E8E8E8 0%, #C0C0C0 50%, #708090 100%);
+        }
+        .rank-bronze {
+            background-image: linear-gradient(135deg, #CD7F32 0%, #A0522D 50%, #8B4513 100%);
+        }
+
+        @media (max-width: 640px) {
+            .mobile-hide { display: none; }
+            .rank-number-bg { font-size: 12rem; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "redux": "https://esm.sh/redux@^5.0.1",
+    "react-redux": "https://esm.sh/react-redux@^9.1.0",
+    "@reduxjs/toolkit": "https://esm.sh/@reduxjs/toolkit@^2.2.1",
+    "gsap": "https://esm.sh/gsap@^3.12.5"
+  }
+}
+</script>
+</head>
+<body class="bg-slate-50">
+    <div id="root"></div>
+    <script type="module" src="index.jsx"></script>
+</body>
+</html>
