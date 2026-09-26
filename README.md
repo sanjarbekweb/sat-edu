@@ -68,15 +68,18 @@ Inline data visualization including:
 
 ## 🔧 Installation & Setup
 
-1. **Clone the repository:**
-   ```bash
-   git clone [repository-url]
-   ```
-2. **Environment:**
-   The project uses modern ESM modules and a browser-based import map. Simply serve the root directory using any local web server (e.g., Live Server, Vite, or Python's HTTP server).
+Use Node.js 22.12+ and npm. JSX source needs Vite transformation; a plain static server is not sufficient.
 
-3. **Dependencies:**
-   No local `npm install` is required if using the provided `index.html` import map which fetches dependencies via `esm.sh`.
+```sh
+git clone https://github.com/sanjarbekweb/sat-edu.git
+cd sat-edu
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`, or the alternative URL printed by Vite. Run `npm run build` to create `dist/` and `npm run preview` to preview it.
+
+The current platform is a frontend demonstration using mock data in `constants.js` and `usersSlice.js`. Rankings update from local state; no live competition server, authentication, or real SAT scoring engine is connected. No Gemini key is needed by the current interface, and no automated test script is declared.
 
 ## 📈 Roadmap
 
